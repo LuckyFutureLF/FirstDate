@@ -68,7 +68,8 @@
             var doneButton = document.createElement('button');
             doneButton.textContent = 'Erledigt';
             doneButton.onclick = function() {
-                window.location.href = 'erledigt.html';
+                document.body.removeChild(overlay);
+                showPasswordMessage();
             };
             doneButton.style.backgroundColor = '#ff1493';
             doneButton.style.color = 'white';
@@ -81,6 +82,58 @@
             popup.appendChild(newGif);
             popup.appendChild(againMessage);
             popup.appendChild(doneButton);
+            overlay.appendChild(popup);
+            document.body.appendChild(overlay);
+        }
+
+        function showPasswordMessage() {
+            var overlay = document.createElement('div');
+            overlay.className = 'overlay';
+            
+            var popup = document.createElement('div');
+            popup.className = 'popup';
+            
+            var newImage = document.createElement('img');
+            newImage.src = 'FSK_18.svg.png'; // Pfad zum Bild
+            newImage.alt = 'Ein Bild';
+            newImage.style.width = '300px';
+            newImage.style.height = 'auto';
+            
+            var passwordMessage = document.createElement('p');
+            passwordMessage.textContent = 'Wenn du in den Jugendfreienbereich möchtest, dann gib das Passwort ein';
+            passwordMessage.style.color = 'black';
+            passwordMessage.style.fontSize = '20px';
+
+            var passwordInput = document.createElement('input');
+            passwordInput.type = 'password';
+            passwordInput.placeholder = 'Passwort eingeben';
+            passwordInput.style.margin = '10px';
+            passwordInput.style.padding = '10px';
+            passwordInput.style.borderRadius = '5px';
+            passwordInput.style.border = '2px solid gray';
+            passwordInput.style.fontSize = '16px';
+
+            var submitButton = document.createElement('button');
+            submitButton.textContent = 'Submit';
+            submitButton.onclick = function() {
+                if (passwordInput.value === 'you own me') {
+                    window.location.href = 'erledigt.html';
+                } else {
+                    alert('Falsches Passwort! Versuche es erneut.');
+                }
+            };
+            submitButton.style.backgroundColor = '#ff1493';
+            submitButton.style.color = 'white';
+            submitButton.style.border = 'none';
+            submitButton.style.padding = '10px 20px';
+            submitButton.style.margin = '10px';
+            submitButton.style.borderRadius = '5px';
+            submitButton.style.cursor = 'pointer';
+            
+            popup.appendChild(newImage);
+            popup.appendChild(passwordMessage);
+            popup.appendChild(passwordInput);
+            popup.appendChild(submitButton);
             overlay.appendChild(popup);
             document.body.appendChild(overlay);
         }
@@ -141,6 +194,9 @@
 
         <button onclick="showKissMessage()">Ja</button>
         <button id="noButton" onclick="moveButton()">Nein</button>
+
+        <!-- Kleines weißes Quadrat in der rechten unteren Ecke -->
+        <a href="easteregg2.html" class="easteregg-link"></a>
     </div>
 </body>
 </html>

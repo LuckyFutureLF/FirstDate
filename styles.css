@@ -65,3 +65,12 @@ button:hover {
     position: relative; /* Für das zweite Popup */
     z-index: 2000; /* Überlagerung für das zweite Popup */
 }
+
+.easteregg-link {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    width: 30px;
+    height: 30px;
+    background-color: white;
+}
